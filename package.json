@@ -1,7 +1,28 @@
 {
-  "name": "my-app",
+  "name": "flip-cards",
   "version": "0.1.0",
-  "private": true,
+  "description": "Flip memory cards game",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/paratagas/flip-cards.git"
+  },
+  "engines": {
+    "npm": ">=6.13.4",
+    "node": ">=12.16.1"
+  },
+  "author": {
+    "name": "Evgeni Sviridenko",
+    "email": "paratagaso@mail.ru",
+    "url": "https://github.com/paratagas"
+  },
+  "license": "MIT",
+  "tags": [
+    "javascript",
+    "react",
+    "game",
+    "es6",
+    "node.js"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
