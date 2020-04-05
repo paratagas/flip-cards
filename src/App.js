@@ -53,6 +53,26 @@ class App extends Component {
       	    <img src={ purple_back } className="card-img" alt="card-img" />
       	  </div>
 
+      	  <div className="card-item">
+      	    <img src={ purple_back } className="card-img" alt="card-img" />
+      	  </div>
+
+      	  <div className="card-item">
+      	    <img src={ purple_back } className="card-img" alt="card-img" />
+      	  </div>
+
+      	  <div className="card-item">
+      	    <img src={ purple_back } className="card-img" alt="card-img" />
+      	  </div>
+
+      	  <div className="card-item">
+      	    <img src={ purple_back } className="card-img" alt="card-img" />
+      	  </div>
+
+      	  <div className="card-item">
+      	    <img src={ purple_back } className="card-img" alt="card-img" />
+      	  </div>
+
         </div>
       </div>
     );
