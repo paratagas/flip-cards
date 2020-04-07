@@ -17,13 +17,30 @@ class Card extends Component {
     onClickHandler: () => {},
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clicked: '',
+    };
+
+    // bindings:
+    this.flipCard = this.flipCard.bind(this);
+  }
+
+  flipCard() {
+    const { clicked } = this.state;
+    this.setState({ clicked: clicked ? '' : 'clicked' });
+  }
+
   render() {
-    const { onClickHandler } = this.props;
+    const { clicked } = this.state;
+    const classList = `card-item ${ clicked }`;
 
     return (
       <div
-        className="card-item"
-        onClick={ () => onClickHandler() }
+        className={ classList }
+        onClick={ this.flipCard }
       >
         <img src={ purple_back } className="card-item__img" alt="card-item__img" />
       </div>

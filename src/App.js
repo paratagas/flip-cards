@@ -12,7 +12,6 @@ class App extends Component {
 
     // bindings:
     this.createCardsList = this.createCardsList.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   createCardsList() {
@@ -20,16 +19,11 @@ class App extends Component {
       return (
         <Card
           key={`card-${ index }`}
-          onClickHandler={ this.handleClick }
         />
       );
     });
 
     return cardsList;
-  }
-
-  handleClick() {
-    console.log('Click');
   }
 
   render() {

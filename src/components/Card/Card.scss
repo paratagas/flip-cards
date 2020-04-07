@@ -4,10 +4,20 @@
 
   cursor: pointer;
   margin: 0 10px 5px 0;
-  transition: .2s;
+  transition: .3s;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  &.clicked {
+    transform: rotateY(180deg);
+
+    img {
+      content: url('../../cards/2C.png');
+      height: 300px;
+      transform: rotateY(180deg);
+    }
   }
 
   &__img {
