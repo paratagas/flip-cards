@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import purple_back from '../../cards/purple_back.png';
+import purpleBack from '../../cards/purple_back.png';
 import './Card.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -17,6 +17,11 @@ class Card extends Component {
     onClickHandler: () => {},
   };
 
+  /**
+   * Class constructor
+   *
+   * @param {array} props List of properties
+   */
   constructor(props) {
     super(props);
 
@@ -28,11 +33,20 @@ class Card extends Component {
     this.flipCard = this.flipCard.bind(this);
   }
 
+  /**
+   * Flip card method
+   */
   flipCard() {
     const { clicked } = this.state;
     this.setState({ clicked: clicked ? '' : 'clicked' });
   }
 
+  /* eslint-disable class-methods-use-this */
+  /**
+   * Class render method
+   *
+   * @returns {node} Element node
+   */
   render() {
     const { clicked } = this.state;
     const classList = `card-item ${ clicked }`;
@@ -42,7 +56,7 @@ class Card extends Component {
         className={ classList }
         onClick={ this.flipCard }
       >
-        <img src={ purple_back } className="card-item__img" alt="card-item__img" />
+        <img src={ purpleBack } className="card-item__img" alt="card-item__img" />
       </div>
     );
   }

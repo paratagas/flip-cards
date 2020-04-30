@@ -7,14 +7,12 @@ const CARDS = Array.from(Array(cardsAmount).keys());
 
 /* eslint-disable react/prefer-stateless-function */
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    // bindings:
-    this.createCardsList = this.createCardsList.bind(this);
-  }
-
-  createCardsList() {
+  /**
+   * Create list of cards
+   *
+   * @returns {array} List of cards
+   */
+  static createCardsList() {
     const cardsList = CARDS.map((item, index) => {
       return (
         <Card
@@ -26,11 +24,17 @@ class App extends Component {
     return cardsList;
   }
 
+  /* eslint-disable class-methods-use-this */
+  /**
+   * Class render method
+   *
+   * @returns {node} Element node
+   */
   render() {
     return (
       <div className="App">
         <div className="App__container">
-          { this.createCardsList() }
+          { App.createCardsList() }
         </div>
       </div>
     );
