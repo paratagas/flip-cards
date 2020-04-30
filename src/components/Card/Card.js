@@ -11,10 +11,12 @@ import './Card.scss';
 class Card extends Component {
   static propTypes = {
     onClickHandler: PropTypes.func,
+    face: PropTypes.string,
   };
 
   static defaultProps = {
     onClickHandler: () => {},
+    face: '',
   };
 
   /**
@@ -48,6 +50,8 @@ class Card extends Component {
    * @returns {node} Element node
    */
   render() {
+    const { face } = this.props;
+    console.log(`this.props.face: ${ face }`);
     const { clicked } = this.state;
     const classList = `card-item ${ clicked }`;
 
@@ -56,7 +60,7 @@ class Card extends Component {
         className={ classList }
         onClick={ this.flipCard }
       >
-        <img src={ purpleBack } className="card-item__img" alt="card-item__img" />
+        <img src={ purpleBack } className="card-item__img" alt={ face } />
       </div>
     );
   }

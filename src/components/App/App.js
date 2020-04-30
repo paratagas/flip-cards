@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Card from './components/Card/Card';
+import Card from '../Card/Card';
 
+// stub for cards amount:
 const cardsAmount = 12;
+// stub for cards:
 const CARDS = Array.from(Array(cardsAmount).keys());
 
 /* eslint-disable react/prefer-stateless-function */
@@ -17,6 +19,7 @@ class App extends Component {
       return (
         <Card
           key={`card-${ index }`}
+          face='2H.png'
         />
       );
     });
