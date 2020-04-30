@@ -1,6 +1,17 @@
 # Flip cards
 
 ### Flip memory cards game
+
+![Home page](https://i.imgur.com/WSnHNvB.png)
+
+---
+
+### Tech stack
+Flip cards uses several projects to work properly:
+
+* [Node.js] - JavaScript runtime built on Chrome's V8 JavaScript engine
+* [React] - Javascript library for building user interfaces
+
 ---
 
 ## Actions:
@@ -40,3 +51,6 @@ They can be used for free according to this permission:
 ### License
 
 MIT
+
+[Node.js]: <https://nodejs.org/>
+[React]: <https://facebook.github.io/react>
