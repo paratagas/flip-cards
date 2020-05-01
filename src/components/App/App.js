@@ -1,25 +1,61 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Card from '../Card/Card';
+import { cards, CARD_EXTENSION } from '../../cards/cards';
+import { selectCardsSubset } from '../../cards/util';
 
 // stub for cards amount:
+// TODO: set value from user with default - 6
+// TODO: remove
 const cardsAmount = 12;
-// stub for cards:
-const CARDS = Array.from(Array(cardsAmount).keys());
 
 /* eslint-disable react/prefer-stateless-function */
 class App extends Component {
+  /**
+   * Import all cards
+   *
+   * @param {function} reqContext Require context
+
+   * @returns {object} List of all cards
+   */
+  static importAllCardImages(reqContext) {
+    let images = {};
+
+    reqContext.keys().forEach(item => {
+      images[item.replace('./', '')] = reqContext(item);
+    });
+      
+    return images;
+  }
+
+  /**
+   * Class constructor
+   *
+   * @param {array} props List of properties
+   */
+  constructor(props) {
+    super(props);
+
+    this.Cards = selectCardsSubset(cards, cardsAmount);
+    this.cardImages = App.importAllCardImages(require.context("../../cards/images/", false, /.*\.png$/));
+
+    // bindings:
+    this.createCardsList = this.createCardsList.bind(this);
+  }
+
   /**
    * Create list of cards
    *
    * @returns {array} List of cards
    */
-  static createCardsList() {
-    const cardsList = CARDS.map((item, index) => {
+  createCardsList() {
+    const cardsList = this.Cards.map((item, index) => {
       return (
         <Card
           key={`card-${ index }`}
-          face='2H.png'
+          face={ item }
+          fullName={`${ item }${ CARD_EXTENSION }`}
+          cardImages={ this.cardImages }
         />
       );
     });
@@ -37,7 +73,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App__container">
-          { App.createCardsList() }
+          { this.createCardsList() }
         </div>
       </div>
     );

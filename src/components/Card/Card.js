@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import purpleBack from '../../cards/purple_back.png';
+import defaultCardBack from '../../cards/images/purple_back.png';
 import './Card.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -12,11 +12,15 @@ class Card extends Component {
   static propTypes = {
     onClickHandler: PropTypes.func,
     face: PropTypes.string,
+    fullName: PropTypes.string,
+    cardImages: PropTypes.object,
   };
 
   static defaultProps = {
     onClickHandler: () => {},
     face: '',
+    fullName: '',
+    cardImages: {},
   };
 
   /**
@@ -43,24 +47,23 @@ class Card extends Component {
     this.setState({ clicked: clicked ? '' : 'clicked' });
   }
 
-  /* eslint-disable class-methods-use-this */
   /**
    * Class render method
    *
    * @returns {node} Element node
    */
   render() {
-    const { face } = this.props;
-    console.log(`this.props.face: ${ face }`);
+    const { face, fullName, cardImages } = this.props;
     const { clicked } = this.state;
     const classList = `card-item ${ clicked }`;
+    const imgSrc = clicked ? cardImages[fullName] : defaultCardBack;
 
     return (
       <div
         className={ classList }
         onClick={ this.flipCard }
       >
-        <img src={ purpleBack } className="card-item__img" alt={ face } />
+        <img src={ imgSrc } className="card-item__img" alt={ face } />
       </div>
     );
   }
