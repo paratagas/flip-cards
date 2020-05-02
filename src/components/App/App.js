@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Card from '../Card/Card';
-import { cards, CARD_EXTENSION } from '../../cards/cards';
-import { selectCardsSubset } from '../../cards/util';
-
-// stub for cards amount:
-// TODO: set value from user with default - 6
-// TODO: remove
-const cardsAmount = 12;
+import { deck52, CARD_EXTENSION } from '../../cards/cards';
+import { selectCardsSubset, getDeck36, createCardsPairs } from '../../cards/util';
 
 /* eslint-disable react/prefer-stateless-function */
 class App extends Component {
@@ -36,7 +31,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.Cards = selectCardsSubset(cards, cardsAmount);
+    this.cardsAmount = 12;
+    this.Cards = createCardsPairs(selectCardsSubset(getDeck36(deck52), this.cardsAmount));
     this.cardImages = App.importAllCardImages(require.context("../../cards/images/", false, /.*\.png$/));
 
     // bindings:

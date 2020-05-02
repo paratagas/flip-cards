@@ -1,4 +1,4 @@
-export const cards = [
+export const deck52 = [
   '2C',
   '2D',
   '2H',
