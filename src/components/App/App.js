@@ -31,7 +31,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.cardsAmount = 12;
+    this.cardsAmount = 6;
     this.Cards = createCardsPairs(selectCardsSubset(getDeck36(deck52), this.cardsAmount));
     this.cardImages = App.importAllCardImages(require.context("../../cards/images/", false, /.*\.png$/));
 
