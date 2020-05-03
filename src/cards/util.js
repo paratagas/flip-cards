@@ -1,3 +1,5 @@
+import { deck52 } from './cards';
+
 /**
  * Shuffles card deck
  *
@@ -30,7 +32,7 @@ function shuffleDeck(cardsDeck) {
 
  * @returns {array} Cards subset
  */
-export const selectCardsSubset = (cardCollection, amountToShow) => shuffleDeck(cardCollection).slice(0, amountToShow);
+const selectCardsSubset = (cardCollection, amountToShow) => shuffleDeck(cardCollection).slice(0, amountToShow);
 
 /**
  * Select 36th deck of cards from 52th deck of cards
@@ -39,7 +41,7 @@ export const selectCardsSubset = (cardCollection, amountToShow) => shuffleDeck(c
  *
  * @returns {array} Sliced card deck
  */
-export const getDeck36 = deck52 => deck52.slice(16);
+const getDeck36 = deck52 => deck52.slice(16);
 
 /**
  * Duplicates pairs for selected cards set
@@ -48,4 +50,17 @@ export const getDeck36 = deck52 => deck52.slice(16);
  *
  * @returns {array} Duplicated and shuffled subset of cards
  */
-export const createCardsPairs = cardsSet => shuffleDeck([ ...cardsSet, ...cardsSet ]);
+const createCardsPairs = cardsSet => shuffleDeck([ ...cardsSet, ...cardsSet ]);
+
+/**
+ * Prepare ready cards subset for interface component
+ *
+ * @param {number} cardsAmount Amount of single cards to show
+ * @param {boolean} shouldUseDeck36 If true - use 36th deck
+
+ * @returns {array} Sliced, shuffled, duplicated and shuffled again cards subset
+ */
+export function prepareCards(cardsAmount, shouldUseDeck36 = true) {
+  // TODO: process shouldUseDeck36
+  return createCardsPairs(selectCardsSubset(getDeck36(deck52), cardsAmount));
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Card from '../Card/Card';
-import { deck52, CARD_EXTENSION } from '../../cards/cards';
-import { selectCardsSubset, getDeck36, createCardsPairs } from '../../cards/util';
+import { CARD_EXTENSION } from '../../cards/cards';
+import { prepareCards } from '../../cards/util';
 
 /* eslint-disable react/prefer-stateless-function */
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
     super(props);
 
     this.cardsAmount = 6;
-    this.Cards = createCardsPairs(selectCardsSubset(getDeck36(deck52), this.cardsAmount));
+    this.Cards = prepareCards(this.cardsAmount);
     this.cardImages = App.importAllCardImages(require.context('../../cards/images/', false, /.*\.png$/));
 
     // bindings:
