@@ -33,7 +33,7 @@ class App extends Component {
 
     this.cardsAmount = 6;
     this.Cards = createCardsPairs(selectCardsSubset(getDeck36(deck52), this.cardsAmount));
-    this.cardImages = App.importAllCardImages(require.context("../../cards/images/", false, /.*\.png$/));
+    this.cardImages = App.importAllCardImages(require.context('../../cards/images/', false, /.*\.png$/));
 
     // bindings:
     this.createCardsList = this.createCardsList.bind(this);
