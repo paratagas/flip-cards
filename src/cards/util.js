@@ -4,7 +4,7 @@ import { deck52 } from './cards';
  * Shuffles card deck
  *
  * @param {array} cardsDeck List of cards
-
+ *
  * @returns {array} Shuffled list of cards
  */
 function shuffleDeck(cardsDeck) {
@@ -29,7 +29,7 @@ function shuffleDeck(cardsDeck) {
  *
  * @param {array} cardCollection Card deck
  * @param {number} amountToShow Amount of cards to show
-
+ *
  * @returns {array} Cards subset
  */
 const selectCardsSubset = (cardCollection, amountToShow) => shuffleDeck(cardCollection).slice(0, amountToShow);
@@ -57,7 +57,7 @@ const createCardsPairs = cardsSet => shuffleDeck([ ...cardsSet, ...cardsSet ]);
  *
  * @param {number} cardsAmount Amount of single cards to show
  * @param {boolean} shouldUseDeck36 If true - use 36th deck
-
+ *
  * @returns {array} Sliced, shuffled, duplicated and shuffled again cards subset
  */
 export function prepareCards(cardsAmount, shouldUseDeck36 = true) {

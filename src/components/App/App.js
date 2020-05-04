@@ -10,7 +10,7 @@ class App extends Component {
    * Import all cards
    *
    * @param {function} reqContext Require context
-
+   *
    * @returns {object} List of all cards
    */
   static importAllCardImages(reqContext) {
