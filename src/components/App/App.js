@@ -34,8 +34,16 @@ class App extends Component {
     this.Cards = prepareCards(this.cardsAmount);
     this.cardImages = App.importAllCardImages(require.context('../../cards/images/', false, /.*\.png$/));
 
+    this.state = {
+      isFirstCard: true,
+      previousCard: null,
+      currentCard: null,
+      finishedCardsSet: [],
+    };
+
     // bindings:
     this.createCardsList = this.createCardsList.bind(this);
+    this.processFlippingCard = this.processFlippingCard.bind(this);
   }
 
   /**
@@ -44,17 +52,54 @@ class App extends Component {
    * @returns {array} List of cards
    */
   createCardsList() {
+    const { finishedCardsSet } = this.state;
+
     const cardsList = this.Cards.map((item, index) => {
       return (
         <Card
           key={`card-${ index }`}
           face={ item }
           cardImages={ this.cardImages }
+          processFlipping={ this.processFlippingCard }
+          finishedCardsSet={ finishedCardsSet }
         />
       );
     });
 
     return cardsList;
+  }
+
+  /**
+   * Process flipping card
+   *
+   * @param {string} currentCard Current card
+   */
+  processFlippingCard(currentFlipped) {
+    let {
+      isFirstCard,
+      previousCard,
+      currentCard,
+      finishedCardsSet,
+    } = this.state;
+
+    if (!previousCard) {
+      previousCard = currentFlipped;
+    } else {
+      previousCard = currentCard;
+    }
+
+    if (!isFirstCard && (previousCard === currentFlipped)) {
+      if (!finishedCardsSet.includes(currentFlipped)) {
+        finishedCardsSet.push(currentFlipped);
+      }
+    }
+
+    this.setState({
+      isFirstCard: false,
+      previousCard,
+      currentCard: currentFlipped,
+      finishedCardsSet,
+    });
   }
 
   /* eslint-disable class-methods-use-this */

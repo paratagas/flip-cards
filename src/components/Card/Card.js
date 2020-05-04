@@ -10,15 +10,17 @@ import './Card.scss';
 /* eslint-disable react/prefer-stateless-function */
 class Card extends Component {
   static propTypes = {
-    onClickHandler: PropTypes.func,
+    processFlipping: PropTypes.func,
     face: PropTypes.string,
     cardImages: PropTypes.object,
+    finishedCardsSet: PropTypes.array,
   };
 
   static defaultProps = {
-    onClickHandler: () => {},
+    processFlipping: () => {},
     face: '',
     cardImages: {},
+    finishedCardsSet: [],
   };
 
   /**
@@ -40,8 +42,12 @@ class Card extends Component {
   /**
    * Flip card method
    */
-  flipCard() {
+  flipCard(face, frozen) {
+    if (frozen) return;
+
+    const { processFlipping } = this.props;
     const { clicked } = this.state;
+    processFlipping(face);
     this.setState({ clicked: clicked ? '' : 'clicked' });
   }
 
@@ -51,15 +57,16 @@ class Card extends Component {
    * @returns {node} Element node
    */
   render() {
-    const { face, cardImages } = this.props;
+    const { face, cardImages, finishedCardsSet } = this.props;
     const { clicked } = this.state;
-    const classList = `card-item ${ clicked }`;
-    const imgSrc = clicked ? cardImages[face] : defaultCardBack;
+    const frozen = finishedCardsSet.includes(face) ? 'frozen' : '';
+    const classList = `card-item ${ clicked } ${ frozen }`;
+    const imgSrc = (clicked || frozen) ? cardImages[face] : defaultCardBack;
 
     return (
       <div
         className={ classList }
-        onClick={ this.flipCard }
+        onClick={() => this.flipCard(face, frozen) }
       >
         <img src={ imgSrc } className="card-item__img" alt={ face } />
       </div>

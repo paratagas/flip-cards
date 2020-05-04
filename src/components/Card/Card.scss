@@ -19,6 +19,10 @@
     }
   }
 
+  &.frozen {
+    opacity: 0.2;
+  }
+
   &__img {
     height: 300px;
   }
