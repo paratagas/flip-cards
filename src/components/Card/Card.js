@@ -12,14 +12,12 @@ class Card extends Component {
   static propTypes = {
     onClickHandler: PropTypes.func,
     face: PropTypes.string,
-    fullName: PropTypes.string,
     cardImages: PropTypes.object,
   };
 
   static defaultProps = {
     onClickHandler: () => {},
     face: '',
-    fullName: '',
     cardImages: {},
   };
 
@@ -53,10 +51,10 @@ class Card extends Component {
    * @returns {node} Element node
    */
   render() {
-    const { face, fullName, cardImages } = this.props;
+    const { face, cardImages } = this.props;
     const { clicked } = this.state;
     const classList = `card-item ${ clicked }`;
-    const imgSrc = clicked ? cardImages[fullName] : defaultCardBack;
+    const imgSrc = clicked ? cardImages[face] : defaultCardBack;
 
     return (
       <div

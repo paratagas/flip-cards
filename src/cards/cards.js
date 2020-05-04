@@ -52,5 +52,3 @@ export const deck52 = [
   'AH',
   'AS', // 52
 ];
-
-export const CARD_EXTENSION = '.png';

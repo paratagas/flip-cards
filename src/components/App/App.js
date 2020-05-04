@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Card from '../Card/Card';
-import { CARD_EXTENSION } from '../../cards/cards';
 import { prepareCards } from '../../cards/util';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -17,7 +16,7 @@ class App extends Component {
     let images = {};
 
     reqContext.keys().forEach(item => {
-      images[item.replace('./', '')] = reqContext(item);
+      images[item.replace('./', '').replace('.png', '')] = reqContext(item);
     });
       
     return images;
@@ -50,7 +49,6 @@ class App extends Component {
         <Card
           key={`card-${ index }`}
           face={ item }
-          fullName={`${ item }${ CARD_EXTENSION }`}
           cardImages={ this.cardImages }
         />
       );
