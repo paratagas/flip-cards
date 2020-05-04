@@ -2,7 +2,7 @@
 
 ### Flip memory cards game
 
-![Home page](https://i.imgur.com/WSnHNvB.png)
+![Home page](https://i.imgur.com/1exhf9u.png)
 
 ---
 
